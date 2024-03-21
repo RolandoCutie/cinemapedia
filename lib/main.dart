@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:cinemapediafernadoherrera/config/router/app_router.dart';
 import 'package:cinemapediafernadoherrera/config/theme/app_theme.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() => runApp(MainApp());
+Future<void> main() async {
+  await dotenv.load(fileName: '.env');
+  runApp(MainApp());
+}
 
 class MainApp extends StatelessWidget {
   @override
