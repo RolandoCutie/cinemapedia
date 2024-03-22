@@ -5,7 +5,7 @@ import 'package:cinemapediafernadoherrera/infraestructure/mappers/movie_mapper.d
 import 'package:cinemapediafernadoherrera/infraestructure/models/moviedb/moviedb_response.dart';
 import 'package:dio/dio.dart';
 
-class MoviedbDatasource extends MovieDatasource {
+class MoviedbDatasource extends MoviesDatasource {
   final dio =
       Dio(BaseOptions(baseUrl: "http://api.themoviedb.org/3", queryParameters: {
     "api_key": Environment.theMovieDbKey,
