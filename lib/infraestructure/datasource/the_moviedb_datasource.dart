@@ -16,12 +16,18 @@ class MoviedbDatasource extends MoviesDatasource {
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
     final response = await dio.get(
       "/movie/now_playing",
+      queryParameters: {
+        "page": page,
+      },
     );
+
+    //todo:here con un metodo fromJson es que obtenemos todos los valores que vienen del json desde backedn
 
     final movieDBResponse = MovieDbResponse.fromJson(response.data);
 
     final List<Movie> movies = movieDBResponse.results
         .where((moviedb) => moviedb.posterPath != 'no-poster')
+        //Aqui con el metodo del movieMapper es q llevamos los datos a un modelo mas usado en la app
         .map((moviedb) => MovieMapper.movieDBToEntity(moviedb))
         .toList();
 
