@@ -12,6 +12,18 @@ class MoviedbDatasource extends MoviesDatasource {
     "language": "es-MX",
   }));
 
+  List<Movie> _jsonToMovies(Map<String, dynamic> json) {
+    final movieDBResponse = MovieDbResponse.fromJson(json);
+
+    final List<Movie> movies = movieDBResponse.results
+        .where((moviedb) => moviedb.posterPath != 'no-poster')
+        //Aqui con el metodo del movieMapper es q llevamos los datos a un modelo mas usado en la app
+        .map((moviedb) => MovieMapper.movieDBToEntity(moviedb))
+        .toList();
+
+    return movies;
+  }
+
   @override
   Future<List<Movie>> getNowPlaying({int page = 1}) async {
     final response = await dio.get(
@@ -21,16 +33,30 @@ class MoviedbDatasource extends MoviesDatasource {
       },
     );
 
-    //todo:here con un metodo fromJson es que obtenemos todos los valores que vienen del json desde backedn
+    return _jsonToMovies(response.data);
+  }
 
-    final movieDBResponse = MovieDbResponse.fromJson(response.data);
+  @override
+  Future<List<Movie>> getPopularMovies({int page = 1}) async {
+    final response = await dio.get(
+      "/movie/popular",
+      queryParameters: {
+        "page": page,
+      },
+    );
 
-    final List<Movie> movies = movieDBResponse.results
-        .where((moviedb) => moviedb.posterPath != 'no-poster')
-        //Aqui con el metodo del movieMapper es q llevamos los datos a un modelo mas usado en la app
-        .map((moviedb) => MovieMapper.movieDBToEntity(moviedb))
-        .toList();
+    return _jsonToMovies(response.data);
+  }
 
-    return movies;
+  @override
+  Future<List<Movie>> getTopRatedMovies({int page = 1}) async {
+    final response = await dio.get(
+      "/movie/top_rated",
+      queryParameters: {
+        "page": page,
+      },
+    );
+
+    return _jsonToMovies(response.data);
   }
 }
