@@ -2,6 +2,6 @@ import 'package:cinemapediafernadoherrera/infraestructure/datasource/the_moviedb
 import 'package:cinemapediafernadoherrera/infraestructure/repositories/movie_repository_impl.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-//Este repositorio es inmutable
+//Este repositorio es inmutable y lo que nos garantiza es que vamos a tener acceso de forma global al repository que implemntamo
 final movieRepositoryProvider =
     Provider((ref) => MovieRepositoryImpl(MoviedbDatasource())); //provider

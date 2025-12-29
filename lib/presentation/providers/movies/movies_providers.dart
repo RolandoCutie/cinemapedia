@@ -4,6 +4,10 @@ import 'package:cinemapediafernadoherrera/domain/entities/movie.dart';
 import 'package:cinemapediafernadoherrera/presentation/providers/movies/movies_repository_provider.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+
+
+typedef MovieCallback = Future<List<Movie>> Function({int page});
+
 //This variable will access to the value of the state and controll the same state with the metods implemented in the movie
 final nowPlayingMoviesProvider =
     StateNotifierProvider<MoviesNotifier, List<Movie>>((ref) {
@@ -23,7 +27,13 @@ final topRatedMoviesProviders =
   return MoviesNotifier(fetchMovies: fetchMoreMovies);
 });
 
-typedef MovieCallback = Future<List<Movie>> Function({int page});
+
+
+
+
+//Todo:este es el controlladxor que se encarga de recibir un calbacck que seria un
+//acceso directo por asi decirlo a donde esta la implentacion del repositorio
+// eso lo definimos en el movies repository provider
 
 class MoviesNotifier extends StateNotifier<List<Movie>> {
   int currentPage = 0;

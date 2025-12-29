@@ -27,6 +27,7 @@ class CustomAppBar extends StatelessWidget {
                   "Cinemapedia",
                   style: titleStyle,
                 ),
+                //TODO:Ester wdget lo que hace es que se coje todo el espacio posible que sea flexible
                 const Spacer(),
                 IconButton(onPressed: () {}, icon: const Icon(Icons.search))
               ],

@@ -22,6 +22,8 @@ class Assets {
       'lib/infraestructure/models/moviedb/moviedb_response.dart';
   static const String moviesHomeScreen =
       'lib/presentation/screens/movies/home_screen.dart';
+  static const String moviesInitialLoadingProvider =
+      'lib/presentation/providers/movies/initial_loading_provider.dart';
   static const String moviesMoviesHorizontalListview =
       'lib/presentation/widgets/movies/movies_horizontal_listview.dart';
   static const String moviesMoviesProviders =
@@ -44,6 +46,8 @@ class Assets {
       'lib/presentation/widgets/shared/custom_appbar.dart';
   static const String sharedCustomBottomNavigationBar =
       'lib/presentation/widgets/shared/custom_bottom_navigation_bar.dart';
+  static const String sharedFullScreenLoader =
+      'lib/presentation/widgets/shared/full_screen_loader.dart';
   static const String themeAppTheme = 'lib/config/theme/app_theme.dart';
   static const String widgetsWidgets = 'lib/presentation/widgets/widgets.dart';
 }

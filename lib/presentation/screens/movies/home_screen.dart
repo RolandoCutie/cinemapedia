@@ -35,6 +35,12 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
+    final initialLoading = ref.watch(initialLoadingProvider);
+
+    if (initialLoading) return const FullScreenLoader();
+
+
+     //Todo:Aqui es donde cargamos la data de las peliculas mediante los providers
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final getPopularMovies = ref.watch(popularMoviesProvider);
     final topRatedMovies = ref.watch(topRatedMoviesProviders);
@@ -51,6 +57,9 @@ class _HomeViewState extends ConsumerState<_HomeView> {
           delegate: SliverChildBuilderDelegate((context, index) {
         return Column(children: [
           MoviesSlideshow(movies: slideShowMovies),
+          const SizedBox(
+            height: 10,
+          ),
           MovieHorizontalListView(
             movies: nowPlayingMovies,
             loadNextPage: () =>
@@ -58,12 +67,18 @@ class _HomeViewState extends ConsumerState<_HomeView> {
             title: 'En cine',
             subTitle: 'Lunes',
           ),
+          const SizedBox(
+            height: 10,
+          ),
           MovieHorizontalListView(
             movies: getPopularMovies,
             loadNextPage: () =>
                 ref.read(popularMoviesProvider.notifier).loadNextPage(),
             title: 'Populares',
             subTitle: 'Lunes',
+          ),
+          const SizedBox(
+            height: 10,
           ),
           MovieHorizontalListView(
             movies: topRatedMovies,
