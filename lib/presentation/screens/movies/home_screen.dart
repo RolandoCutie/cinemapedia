@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../providers/providers.dart';
 
 class HomeScreen extends StatelessWidget {
-  static const name = 'home-screen';
+  static const  name = 'home-screen';
 
   const HomeScreen({super.key});
 

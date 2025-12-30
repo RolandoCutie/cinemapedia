@@ -1,7 +1,9 @@
-import 'package:cinemapediafernadoherrera/presentation/screens/movies/home_screen.dart';
+import 'package:cinemapediafernadoherrera/presentation/screens/screens.dart';
 import 'package:go_router/go_router.dart';
 
-final appRouter = GoRouter(routes: [
+final appRouter = GoRouter(
+  initialLocation: '/',
+  routes: [
   GoRoute(
       path: '/',
       name: HomeScreen.name,
